@@ -1,35 +1,16 @@
-fn main() {
-    match fibonacci(8) {
-        Ok(number) => println!("8th index number is {:?}", number),
-        Err(mut error) => println!("error is {:?}", error.description()),
-    }
-
-    let before_overflow = fibonacci(85);
-    match before_overflow {
-        Ok(number) => println!("85th index number is {:?}", number),
-        Err(mut error) => println!("error is {:?}", error.description()),
-    }
-
-    let overflow = fibonacci(10000);
-    match overflow {
-        Ok(number) => println!("10000th index number is {:?}", number),
-        Err(mut error) => println!("error is {:?}", error.description()),
-    }
-}
-
-enum FibonacciError {
+pub enum FibonacciError {
     Overflow
 }
 
 impl FibonacciError {
-    fn description(&mut self) -> String {
+    pub fn description(&mut self) -> String {
         match *self {
             FibonacciError::Overflow => return String::from("Overflow")
         };
     }
 }
 
-fn fibonacci(location: i64) -> Result<i64, FibonacciError> {
+pub fn fibonacci(location: i64) -> Result<i64, FibonacciError> {
     if location <= 2 {
         return Ok(1);
     }
