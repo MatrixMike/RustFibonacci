@@ -3,6 +3,7 @@ pub enum FibonacciError {
 }
 
 impl FibonacciError {
+//#[derive(Debug)]
     pub fn description(&mut self) -> String {
         match *self {
             FibonacciError::Overflow => return String::from("Overflow")
@@ -33,4 +34,13 @@ pub fn fibonacci(location: i64) -> Result<i64, FibonacciError> {
     }
 
     Ok(second)
+}
+fn main() {
+    // Your program will start here.
+    println!("Hello world!");
+    let _ = fibonacci(100);
+    let _f = fibonacci(100);
+    let f = fibonacci(7);
+      println!("{}",f);  //  was  :?
+    
 }
